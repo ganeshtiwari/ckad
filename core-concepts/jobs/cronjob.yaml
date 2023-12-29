@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: testcron
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: testcron
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: busybox
+            name: testcron  
+            command: ["sh", "-c", "echo 'hello eval $(date)'"]
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '* * * * *'
+status: {}

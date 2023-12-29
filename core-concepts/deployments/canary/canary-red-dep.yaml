@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: canary-red
+  name: canary-red
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: canary
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: canary
+    spec:
+      containers:
+      - image: redapp
+        imagePullPolicy: Never
+        name: canary-red
+        resources: {}
+status: {}
